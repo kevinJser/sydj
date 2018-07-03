@@ -1,0 +1,102 @@
+body, html, p{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    padding-bottom: 5px;
+}
+.data-list {
+    box-sizing: border-box;
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+.data-info {
+    text-align: center;
+    font-size: 15px;
+    color: #323232;
+}
+.get-data {          
+    margin-left: 285px;
+    border-radius: 2px;
+    background: #4285F4;
+    color: #fff;
+    height: 26px;
+    width: 68px;
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+}
+.data-list ul {
+    margin: 0;
+    list-style: none;
+    height: 276px;
+    overflow: auto;
+    padding: 10px 20px;
+    overflow-y: scroll;
+    margin-right: -20px;
+}
+.data-list ul li {
+    position: relative;
+    padding-left: 1em;
+    height: 46px;
+    line-height: 46px;
+    border-top: 1px solid #e5e5e5;
+    font-size: 14px;
+    color: #323232;
+    background: #f8f8f8;
+}
+.data-list ul li.complete>span.shadow {
+    display: block;
+    content: "";    
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .7);
+    cursor: not-allowed;
+    z-index: 99999;
+}
+.event-title {
+    display: inline-block;
+    width: 210px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.fill,
+.finish {    
+    position: absolute;
+    right: 80px;
+    top: 8px;
+    border-radius: 2px;
+    background: #4285F4;
+    color: #fff;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+.finish {
+    right: 20px;
+    background: #F1592B;    
+}
+.fill:hover {
+    background: rgb(100, 155, 245); 
+}
+p.info {
+    color: #333;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+}
+p.info span {
+    margin-left: 8px;
+}
