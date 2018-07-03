@@ -1,0 +1,29 @@
+{
+    "name": "form-fill",
+    "version": "0.02",
+    "manifest_version": 2,
+    "description": "A browser extend",
+    "permissions": [
+        "http://*/",
+        "tabs",
+        "activeTab",
+        "notifications"
+    ],
+    "browser_action": {
+        "default_icon": "images/icon1.png",
+        "default_title": "表单填充",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*"
+            ],
+            "js": [
+                "js/jquery-1.11.3.js",                             
+                "js/content.js"
+            ],           
+            "run_at": "document_end"
+        }
+    ]
+}
