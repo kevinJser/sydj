@@ -22,7 +22,7 @@ body {
     color: #323232;
 }
 .get-data {          
-    margin-left: 285px;
+    margin-left: 215px;
     border-radius: 2px;
     background: #4285F4;
     color: #fff;
@@ -31,6 +31,13 @@ body {
     text-align: center;
     line-height: 26px;
     cursor: pointer;
+    display: none;
+}
+.loginout {
+    color: #4285F4;    
+    margin-left: 20px;
+    cursor: pointer;
+    display: none;
 }
 .data-list ul {
     margin: 0;
@@ -40,6 +47,55 @@ body {
     padding: 10px 20px;
     overflow-y: scroll;
     margin-right: -20px;
+    display: none;
+}
+.loginin-com {
+    display: block;
+    margin-top: 80px;    
+}
+.loginin-com label {
+    display: block;    
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.loginin-com label input {
+    border: 1px solid #cccccc;
+    width: 200px;
+    height: 30px;
+    text-indent: 1em;
+}
+.loginin-btn {
+    display: inline-block;
+    color: #ffffff;
+    width: 200px;    
+    height: 30px;
+    line-height: 30px;    
+    letter-spacing: 1em;
+    text-indent: 1em;
+    background-color: #1890ff;
+    cursor: pointer;
+}
+.loginin-err {
+    display: none;
+    margin-left: 100px;
+    color: #f5222d;
+}
+.loginin-err.active {
+    display: inline-block;
+}
+/* 登录状态 */
+.data-list.login ul {
+    display: block;
+}
+.data-list.login .loginin-com {
+    display: none;
+}
+.data-list.login .get-data {
+    display: inline-block;
+}
+.data-list.login .loginout {
+    display: inline-block;
 }
 .data-list ul li {
     position: relative;

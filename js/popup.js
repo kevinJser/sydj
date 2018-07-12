@@ -177,6 +177,7 @@ var EVENTLISTDATA;
 * 获取数据
 */
 function httpRequest(callback) {
+    openLoading();
     var url = "http://172.16.9.170/xcq/CertificateApiAction.pluginLineList.act?typeName=%E5%A4%B1%E4%B8%9A%E7%99%BB%E8%AE%B0";
     $.ajax({
         type: "GET",
@@ -190,11 +191,13 @@ function httpRequest(callback) {
         },
         error: function (err) {
             console.log(err);
-            alert('数据获取错误，请重启浏览器或联系管理员')
+            alert('数据获取错误，请重启浏览器或联系管理员');
+            window.close();
         }
     })
 };
 
+/* 文件下载 */
 function fileRequest(id) {
     openLoading();
     var url = "http://172.16.9.170/xcq/CertificateApiAction.pluginAccessoryList.act?busId="
@@ -234,7 +237,7 @@ function fileRequest(id) {
                     closeLoading();
                     console.log("error");
                 }
-            })            
+            })
         },
         error: function (err) {
             console.log(err);
@@ -243,8 +246,45 @@ function fileRequest(id) {
     })
 }
 
+/* 用户名登录 */
+function loginRequest(name, pwd) {
+    openLoading();
+    var url = "http://172.16.9.170/xcq/CertificateApiAction.pluginLogin.act";
+    $.ajax({
+        type: "GET",
+        data: {
+            "userName": name,
+            "password": pwd
+        },
+        url: url,
+        success: function (data) {
+            closeLoading();
+            var data = data.replace(/(^\s*)|(\s*$)/g, "");
+            if (data == "用户名或密码错误") {
+                $(".loginin-err").addClass("active");
+                return;
+            }
+            data = JSON.parse(data);
+            var uid = data.uid;
+            var name = data.name; //易加街道
+            var areaCode = data.areaCode;
+            var areaName = data.areaName;
+            $(".loginin-err").removeClass("active");
+            localStorage.setItem('sydjUid', uid);  //设置数据到localStorage 
+            localStorage.removeItem('feventId');
+            localStorage.removeItem('feventListData');
+            $(".data-list").addClass("login");            
+            $('.data-list').find('ul').html('请获取数据');
+        },
+        error: function (err) {
+            console.log(err);
+            alert('服务器错误，请重启浏览器或联系管理员')
+        }
+    })
+}
+
 /**
- * 获取本地数据
+ * 获取本地列表数据
   */
 function getLocalData(callback) {
     var localData = JSON.parse(localStorage.getItem('feventListData'));
@@ -256,6 +296,19 @@ function getLocalData(callback) {
     }
 
 }
+
+/* 获取本地用户uid ,切换对应的界面*/
+function getUserId() {
+    var userId = localStorage.getItem('sydjUid');
+    if (userId !== null && userId !== "") {
+        $(".data-list").addClass("login");
+        //获取本地列表数据
+        getLocalData(setData);
+    } else {
+        $(".data-list").removeClass("login");        
+    }
+}
+
 
 /**
  * 数据展现为列表 
@@ -317,14 +370,14 @@ function closeLoading() {
 
 $(function () {
 
-    //获取本地数据
-    getLocalData(setData);
+    //获取用户信息
+    getUserId();
 
     //点击获取数据
     $('.get-data').on('click', function () {
-        openLoading();
-        //清空locastorage
-        localStorage.clear();
+        //清除对应的locastorage
+        localStorage.removeItem('feventId');
+        localStorage.removeItem('feventListData');
 
         function getData() {
             var hasItemId = localStorage.getItem('feventId');
@@ -336,6 +389,29 @@ $(function () {
             }
         };
         getData();
+    });
+
+    //点击登录
+    $(".loginin-btn").on('click', function () {
+        var username = $('#userName').val();
+        var password = $('#password').val();
+        if (username === "" || password === "") {
+            $('.loginin-err').addClass("active");
+            return;
+        }
+        loginRequest(username, password);
+    })
+    //enter
+    $(document).keyup(function (event) {
+        if (event.keyCode == 13) {
+            var username = $('#userName').val();
+            var password = $('#password').val();
+            if (username === "" || password === "") {
+                $('.loginin-err').addClass("active");
+                return;
+            }
+            loginRequest(username, password);
+        }
     });
 
     //填充点击
@@ -351,12 +427,12 @@ $(function () {
         };
         fileRequest(eventId);
         // 发送消息
-        // chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        //     chrome.tabs.sendMessage(tabs[0].id, obj, function (response) {
-        //         console.log("Send Success");
-        //         // window.close();
-        //     });
-        // });
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, obj, function (response) {
+                console.log("Send Success");
+                // window.close();
+            });
+        });
     });
 
     //完成点击
@@ -380,9 +456,20 @@ $(function () {
 
 
             //把事件id传给后台  
-            
+
 
         };
+    })
+
+    //退出账号
+    $('.loginout').on('click', function () {
+        localStorage.removeItem('sydjUid');
+        $('.data-list').removeClass('login');
+    })
+
+    //input改变
+    $('input').on('input', function () {
+        $('.loginin-err').removeClass('active');
     })
 
 });

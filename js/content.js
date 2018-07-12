@@ -602,16 +602,7 @@ var _ajax = function (url, data, method, success) {
         }
     })
 };
-// //对应的input禁止点击
-// function inputBan($input) {
-//     var ele = $input.closest('span.mini-buttonedit.mini-combobox.mini-popupedit.mini-buttonedit-noInput');
-//     ele.addClass('mini-buttonedit-readOnly');
-// }
-// // 对应的input解除禁止状态
-// function inputFree($input) {
-//     var ele = $input.closest('span.mini-buttonedit.mini-combobox.mini-popupedit.mini-buttonedit-noInput');
-//     ele.removeClass('mini-buttonedit-readOnly');
-// }
+
 
 // 接收消息
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -639,7 +630,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                             };
                         };
                     };
-                    
+
                     if (hasIframe) {
                         var workDocument = currentIframe[0].contentWindow.document;
                         var nod = document.createElement('style');
@@ -751,662 +742,663 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                             var method;
                             var success;
                             if (fill) {
-                                // try {
-                                for (var key in formData) { //遍历数据填表                                                                             
-                                    var keyId = key + "$text";
-                                    if (key == "aac003") {  //姓名                                
-                                        // $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "aac067") {  //手机    
-                                        console.log(formData[key]);
-                                        console.log($(workDocument).find("input[name='" + key + "']"));
-                                        $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "bdc049") {  //失业登记编号
-                                        // $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "aac010") {  //户籍地址
-                                        $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "aac026") {  //居住地址
-                                        $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "aae005") {  //联系电话                                
-                                        $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "aac181") {  //毕业时间   
-                                        workDocument.getElementById(keyId).value = formData[key];
-                                        $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "aac180") {  //毕业学校                                
-                                        $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "acc214") {  //福利要求                     
-                                        $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "aae043") {  //求职日期   
-                                        workDocument.getElementById(keyId).value = formData[key];
-                                        $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "aae053") {  //借记卡卡号                            
-                                        $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "bdc027") {  //收件地址                            
-                                        $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "acc034") {  //最低月薪要求                                                   
-                                        $(workDocument).find("input[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "aae013") {  //备注                                    
-                                        $(workDocument).find("textarea[name='" + key + "']").val(formData[key]);
-                                    } else if (key == "aac002") { //身份证 
-                                        // var idcode = formData[key];
-                                        // var changeEvent = new UIEvent("change");
-                                        // var blurEvent = new UIEvent("blur");                                                                               
-                                        // var idcardInput = $(workDocument).find("input[name='aac002']")[0];                                    
-                                        // idcardInput.value = idcode;
-                                        // idcardInput.dispatchEvent(changeEvent);
-                                        // idcardInput.dispatchEvent(blurEvent);
+                                try {
+                                    for (var key in formData) { //遍历数据填表                                                                             
+                                        var keyId = key + "$text";
+                                        if (key == "aac003") {  //姓名                                
+                                            // $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "aac067") {  //手机    
+                                            console.log(formData[key]);
+                                            console.log($(workDocument).find("input[name='" + key + "']"));
+                                            $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "bdc049") {  //失业登记编号
+                                            // $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "aac010") {  //户籍地址
+                                            $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "aac026") {  //居住地址
+                                            $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "aae005") {  //联系电话                                
+                                            $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "aac181") {  //毕业时间   
+                                            workDocument.getElementById(keyId).value = formData[key];
+                                            $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "aac180") {  //毕业学校                                
+                                            $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "acc214") {  //福利要求                     
+                                            $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "aae043") {  //求职日期   
+                                            workDocument.getElementById(keyId).value = formData[key];
+                                            $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "aae053") {  //借记卡卡号                            
+                                            $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "bdc027") {  //收件地址                            
+                                            $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "acc034") {  //最低月薪要求                                                   
+                                            $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "aae013") {  //备注                                    
+                                            $(workDocument).find("textarea[name='" + key + "']").val(formData[key]);
+                                        } else if (key == "aac002") { //身份证 
+                                            // var idcode = formData[key];
+                                            // var changeEvent = new UIEvent("change");
+                                            // var blurEvent = new UIEvent("blur");                                                                               
+                                            // var idcardInput = $(workDocument).find("input[name='aac002']")[0];                                    
+                                            // idcardInput.value = idcode;
+                                            // idcardInput.dispatchEvent(changeEvent);
+                                            // idcardInput.dispatchEvent(blurEvent);
 
-                                        // url = "http://172.16.83.22:9001/lemis/basicinfo/ac01/queryAc01ByAac002ToUNE";
-                                        // data = { aac002: idcode };
-                                        // method = "POST";
-                                        // success = function (data) {
+                                            // url = "http://172.16.83.22:9001/lemis/basicinfo/ac01/queryAc01ByAac002ToUNE";
+                                            // data = { aac002: idcode };
+                                            // method = "POST";
+                                            // success = function (data) {
 
-                                        //     var status = parseFloat(data.code);
+                                            //     var status = parseFloat(data.code);
 
-                                        //     if (status == 1) {
-                                        //         var info = data.data;
-                                        //         var code = info.aac001; //编号(不知道什么编号)
-                                        //         var name = info.aac003; //姓名
-                                        //         var idcode = info.aac002; //身份证号
-                                        //         var time = info.aae036; //时间
-                                        //         var person = info.bae101; //经办人
-                                        //         if(person !== "" && typeof(person) !== null) {
-                                        //             $(workDocument).find("input[name='username']").val(person);
-                                        //         }
-                                        //         $(workDocument).find("input[name='aac003']").val(name);
-                                        //         $(workDocument).find("input[name='" + key + "']").val(idcode);
-                                        //         var eurl = "http://172.16.83.22:9001/lemis/unemployment/dc04/checkPerson";
-                                        //         var edata = {
-                                        //             aac001: code,
-                                        //             aac002: idcode,
-                                        //             aac003: name
-                                        //         };
-                                        //         var emethod = "POST";
-                                        //         var success = function (data) {
-                                        //             if(data.code == "noMsg"){
-                                        //                 alert(data.message);
-                                        //                 return;
-                                        //             }                                                                                      
-                                        //             var info = data.data;
-                                        //             var code = info.bdc049;                                                                                                                                 
-                                        //             $(workDocument).find("input[name='bdc049']").val(code);
-                                        //         }
-                                        //         _ajax(eurl, edata, emethod, success);
-                                        //     } else {
-                                        //         alert("系统中不存在该人员，新增操作需手动填入数据!");
-                                        //     }
-                                        // };
-                                        // _ajax(url, data, method, success);
-                                    } else if (key == "aac009") { //户籍性质                                                                          
-                                        workDocument.getElementById(keyId).value = formData[key];
-                                        switch (formData[key]) {
-                                            case "本地居民户口":
-                                                $(workDocument).find("input[name='" + key + "']").val(51);
-                                                jczType(true);
-                                                census();
-                                                break;
-                                            case "外地居民户口":
-                                                $(workDocument).find("input[name='" + key + "']").val(52);
-                                                jczType(false);
-                                                registerType(false);
-                                                getDwell(2);
-                                                break;
-                                            case "本地农业户口（本地农村）":
-                                                $(workDocument).find("input[name='" + key + "']").val(21);
-                                                jczTyp(true);
-                                                census();
-                                                break;
-                                            case "外地农业户口（外地农村）":
-                                                $(workDocument).find("input[name='" + key + "']").val(22);
-                                                jczType(false);
-                                                registerType(false);
-                                                getDwell(2);
-                                                break;
-                                            case "本地非农业户口（本地城镇）":
-                                                $(workDocument).find("input[name='" + key + "']").val(11);
-                                                jczType(true);
-                                                census();
-                                                break;
-                                            case "外地非农业户口（外地城镇）":
-                                                $(workDocument).find("input[name='" + key + "']").val(12);
-                                                jczType(false);
-                                                registerType(false);
-                                                getDwell(2);
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    } else if (key == "bdc041") { //登记类型
-                                        workDocument.getElementById(keyId).value = formData[key];
-                                        switch (formData[key]) {
-                                            case "户籍地失业登记":
-                                                registerType(true);
-                                                getDwell(1);
-                                                getCensus(1);
-                                                break;
-                                            case "居住地失业登记":
-                                                registerType(false);
-                                                getDwell(2);
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    } else if (key == "area1") { //户籍地 区
-                                        var censusNature = parseFloat($('input[name=province1]').val());
-                                        if (censusNature == 51 || censusNature == 21 || censusNature == 11) {
-                                            censusNature = 1;  //本地
-                                            url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCity?aaa020=3301";
-                                        } else {
-                                            censusNature = 2;  //外地
-                                            url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryArea";
-                                        }
-                                        data = {
-                                            key: formData[key]
-                                        }
-                                        var edata;
-                                        eurl = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCityAndProvince";
-                                        method = "POST";
-                                        success = function (data) {
-                                            var info = data.data;
-                                            var infoLen = info.length;
-                                            for (var i = 0; i < infoLen; i++) {
-                                                if (info[i].aaa021 == formData[key]) {
-                                                    var code = info[i].aaa020;
-                                                    edata = {
-                                                        aaa023: info[i].aaa023
-                                                    };
-                                                    workDocument.getElementById(keyId).value = formData[key];
-                                                    $(workDocument).find("input[name='" + key + "']").val(code);
+                                            //     if (status == 1) {
+                                            //         var info = data.data;
+                                            //         var code = info.aac001; //编号(不知道什么编号)
+                                            //         var name = info.aac003; //姓名
+                                            //         var idcode = info.aac002; //身份证号
+                                            //         var time = info.aae036; //时间
+                                            //         var person = info.bae101; //经办人
+                                            //         if(person !== "" && typeof(person) !== null) {
+                                            //             $(workDocument).find("input[name='username']").val(person);
+                                            //         }
+                                            //         $(workDocument).find("input[name='aac003']").val(name);
+                                            //         $(workDocument).find("input[name='" + key + "']").val(idcode);
+                                            //         var eurl = "http://172.16.83.22:9001/lemis/unemployment/dc04/checkPerson";
+                                            //         var edata = {
+                                            //             aac001: code,
+                                            //             aac002: idcode,
+                                            //             aac003: name
+                                            //         };
+                                            //         var emethod = "POST";
+                                            //         var success = function (data) {
+                                            //             if(data.code == "noMsg"){
+                                            //                 alert(data.message);
+                                            //                 return;
+                                            //             }                                                                                      
+                                            //             var info = data.data;
+                                            //             var code = info.bdc049;                                                                                                                                 
+                                            //             $(workDocument).find("input[name='bdc049']").val(code);
+                                            //         }
+                                            //         _ajax(eurl, edata, emethod, success);
+                                            //     } else {
+                                            //         alert("系统中不存在该人员，新增操作需手动填入数据!");
+                                            //     }
+                                            // };
+                                            // _ajax(url, data, method, success);
+                                        } else if (key == "aac009") { //户籍性质                                                                          
+                                            workDocument.getElementById(keyId).value = formData[key];
+                                            switch (formData[key]) {
+                                                case "本地居民户口":
+                                                    $(workDocument).find("input[name='" + key + "']").val(51);
+                                                    jczType(true);
+                                                    census();
                                                     break;
-                                                }
-                                            }
-                                        };
-                                        var esuccess = function (data) {
-                                            var info = data.data;
-                                            workDocument.getElementById('province1$text').value = info[1].aaa021;
-                                            $(workDocument).find("input[name='province1']").val(info[1].aaa020);
-                                            workDocument.getElementById('city1$text').value = info[0].aaa021;
-                                            $(workDocument).find("input[name='city1']").val(info[0].aaa020);
-                                        };
-                                        _ajax(url, data, method, success);
-                                        _ajax(eurl, edata, method, esuccess);
-                                    } else if (key == "street1") { //户籍地 街道
-                                        var aaa020Value = $(workDocument).find("input[name='area1']").val();
-                                        url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCity";
-                                        data = {
-                                            aaa020: aaa020Value
-                                        };
-                                        method = "GET";
-                                        success = function (data) {
-                                            var info = data.data;
-                                            var infoLen = info.length;
-                                            for (var i = 0; i < infoLen; i++) {
-                                                if (info[i].aaa021 == formData[key]) {
-                                                    var code = info[i].aaa020;
-                                                    workDocument.getElementById(keyId).value = formData[key];
-                                                    $(workDocument).find("input[name='" + key + "']").val(code);
+                                                case "外地居民户口":
+                                                    $(workDocument).find("input[name='" + key + "']").val(52);
+                                                    jczType(false);
+                                                    registerType(false);
+                                                    getDwell(2);
                                                     break;
-                                                }
-                                            }
-                                        };
-                                        _ajax(url, data, method, success);
-                                    } else if (key == "community1") { //户籍地 社区
-                                        var aaa020Value = $(workDocument).find("input[name='street1']").val();
-                                        url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCity";
-                                        data = {
-                                            aaa020: aaa020Value
-                                        };
-                                        method = "GET";
-                                        success = function (data) {
-                                            var info = data.data;
-                                            var infoLen = info.length;
-                                            for (var i = 0; i < infoLen; i++) {
-                                                if (info[i].aaa021 == formData[key]) {
-                                                    var code = info[i].aaa020;
-                                                    workDocument.getElementById(keyId).value = formData[key];
-                                                    $(workDocument).find("input[name='" + key + "']").val(code);
+                                                case "本地农业户口（本地农村）":
+                                                    $(workDocument).find("input[name='" + key + "']").val(21);
+                                                    jczTyp(true);
+                                                    census();
                                                     break;
-                                                }
-                                            }
-                                        };
-                                        _ajax(url, data, method, success);
-                                    } else if (key == "area2") {  //居住地 区
-                                        url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryHZArea";
-                                        data = {};
-                                        method = "GET";
-                                        success = function (data) {
-                                            var info = data.data;
-                                            var infoLen = info.length;
-                                            for (var i = 0; i < infoLen; i++) {
-                                                if (info[i].aaa021 == formData[key]) {
-                                                    var code = info[i].aaa020;
-                                                    workDocument.getElementById(keyId).value = formData[key];
-                                                    $(workDocument).find("input[name='" + key + "']").val(code);
+                                                case "外地农业户口（外地农村）":
+                                                    $(workDocument).find("input[name='" + key + "']").val(22);
+                                                    jczType(false);
+                                                    registerType(false);
+                                                    getDwell(2);
                                                     break;
-                                                }
-                                            }
-                                        };
-                                        _ajax(url, data, method, success);
-                                    } else if (key == "street2") {  //居住地 街道
-                                        var aaa020Value = $(workDocument).find("input[name='area2']").val();
-                                        url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCity";
-                                        data = {
-                                            aaa020: aaa020Value
-                                        };
-                                        method = "GET";
-                                        success = function (data) {
-                                            var info = data.data;
-                                            var infoLen = info.length;
-                                            for (var i = 0; i < infoLen; i++) {
-                                                if (info[i].aaa021 == formData[key]) {
-                                                    var code = info[i].aaa020;
-                                                    workDocument.getElementById(keyId).value = formData[key];
-                                                    $(workDocument).find("input[name='" + key + "']").val(code);
+                                                case "本地非农业户口（本地城镇）":
+                                                    $(workDocument).find("input[name='" + key + "']").val(11);
+                                                    jczType(true);
+                                                    census();
                                                     break;
-                                                }
-                                            }
-                                        }
-                                    } else if (key == "community2") { //居住地 社区
-                                        var aaa020Value = $(workDocument).find("input[name='street2']").val();
-                                        url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCity";
-                                        data = {
-                                            aaa020: aaa020Value
-                                        };
-                                        method = "GET";
-                                        success = function (data) {
-                                            var info = data.data;
-                                            var infoLen = info.length;
-                                            for (var i = 0; i < infoLen; i++) {
-                                                if (info[i].aaa021 == formData[key]) {
-                                                    var code = info[i].aaa020;
-                                                    workDocument.getElementById(keyId).value = formData[key];
-                                                    $(workDocument).find("input[name='" + key + "']").val(code);
+                                                case "外地非农业户口（外地城镇）":
+                                                    $(workDocument).find("input[name='" + key + "']").val(12);
+                                                    jczType(false);
+                                                    registerType(false);
+                                                    getDwell(2);
                                                     break;
-                                                }
+                                                default:
+                                                    break;
                                             }
-                                        };
-                                        _ajax(url, data, method, success);
-                                    } else if (key == "aac005") {  //民族
-                                        var nationCode;
-                                        var nationText = formData[key]
-                                        for (var i = 0; i < nationData.length; i++) {
-                                            if (typeof (nationData[i][nationText]) !== "undefined") {
-                                                nationCode = nationData[i][nationText];
-                                                workDocument.getElementById(keyId).value = formData[key];
-                                                $(workDocument).find("input[name='" + key + "']").val(nationCode);
-                                                break;
+                                        } else if (key == "bdc041") { //登记类型
+                                            workDocument.getElementById(keyId).value = formData[key];
+                                            switch (formData[key]) {
+                                                case "户籍地失业登记":
+                                                    registerType(true);
+                                                    getDwell(1);
+                                                    getCensus(1);
+                                                    break;
+                                                case "居住地失业登记":
+                                                    registerType(false);
+                                                    getDwell(2);
+                                                    break;
+                                                default:
+                                                    break;
                                             }
-                                        }
-                                    } else if (key == "aac017") {  //婚姻   
-                                        var marriageCode;
-                                        switch (formData[key]) {
-                                            case "未婚":
-                                                marriageCode = "1";
-                                                break;
-                                            case "已婚":
-                                                marriageCode = "2";
-                                                break;
-                                            case "丧偶":
-                                                marriageCode = "3";
-                                                break;
-                                            case "离婚":
-                                                marriageCode = "4";
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                        workDocument.getElementById(keyId).value = formData[key];
-                                        $(workDocument).find("input[name='" + key + "']").val(marriageCode);
-                                    } else if (key == "aac011") {  //学历
-                                        var educationCode;
-                                        var educationText = formData[key]
-                                        for (var i = 0; i < educationData.length; i++) {
-                                            if (typeof (educationData[i][educationText]) !== "undefined") {
-                                                educationCode = educationData[i][educationText];
-                                                workDocument.getElementById(keyId).value = formData[key];
-                                                $(workDocument).find("input[name='" + key + "']").val(educationCode);
-                                                break;
+                                        } else if (key == "area1") { //户籍地 区
+                                            var censusNature = parseFloat($('input[name=province1]').val());
+                                            if (censusNature == 51 || censusNature == 21 || censusNature == 11) {
+                                                censusNature = 1;  //本地
+                                                url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCity?aaa020=3301";
+                                            } else {
+                                                censusNature = 2;  //外地
+                                                url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryArea";
                                             }
-                                        }
-                                    } else if (key == "aac183") {  //专业
-                                        var majorCode;
-                                        var majorText = formData[key]
-                                        for (var i = 0; i < majorData.length; i++) {
-                                            if (typeof (majorData[i][majorText]) !== "undefined") {
-                                                majorCode = majorData[i][majorText];
-                                                workDocument.getElementById(keyId).value = formData[key];
-                                                $(workDocument).find("input[name='" + key + "']").val(majorCode);
-                                                break;
+                                            data = {
+                                                key: formData[key]
                                             }
-                                        }
-                                    } else if (key == "ajc093") {  //失业原因                                    
-                                        var unemploymentCode;
-                                        var unemploymentText = formData[key]
-                                        console.log(unemploymentText);
-                                        for (var i = 0; i < unemploymentData.length; i++) {
-                                            if (typeof (unemploymentData[i][unemploymentText]) !== "undefined") {
-                                                unemploymentCode = unemploymentData[i][unemploymentText];
-                                                workDocument.getElementById(keyId).value = formData[key];
-                                                console.log(workDocument.getElementById(keyId));
-                                                console.log(formData[key]);
-                                                $(workDocument).find("input[name='" + key + "']").val(unemploymentCode);
-                                                break;
-                                            }
-                                        }
-                                    } else if (key == "bdc062") { //是否申领保险金
-                                        workDocument.getElementById(keyId).value = formData[key];
-                                        switch (formData[key]) {
-                                            case "否":
-                                                $(workDocument).find("input[name='" + key + "']").val("0");
-                                                break;
-                                            case "是":
-                                                $(workDocument).find("input[name='" + key + "']").val("1");
-                                                break;
-
-                                            default:
-                                                break;
-                                        }
-                                    } else if (key == "bdc067") { //是否打印就业创业证书
-                                        workDocument.getElementById(keyId).value = formData[key];
-                                        switch (formData[key]) {
-                                            case "否":
-                                                $(workDocument).find("input[name='" + key + "']").val(0);
-                                                break;
-                                            case "是":
-                                                $(workDocument).find("input[name='" + key + "']").val(1);
-                                                break;
-
-                                            default:
-                                                break;
-                                        }
-                                    } else if (key == "aab003") { //组织结构代码
-
-                                        url = "http://172.16.83.22:9001/lemis/basicinfo/ab01/queryAb01ByAab003ToUNE";
-                                        data = {
-                                            aab003: formData[key]
-                                        };
-                                        method = "POST";
-                                        success = function (data) {
-                                            if (!data.success == false) {
-                                                $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                            var edata;
+                                            eurl = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCityAndProvince";
+                                            method = "POST";
+                                            success = function (data) {
                                                 var info = data.data;
-                                                //设置组织结构代码（当输入信用号码也可以查找到信息，因此需要把组织机构代码输入）                                    
-                                                $(workDocument).find("input[name='" + key + "']").val(info.aab003);
-                                                //设置单位名称
-                                                $(workDocument).find("input[name='aab004']").val(info.aab004);
-                                                //设置单位性质
-                                                if (typeof (info.aab019) !== "undefined") {
-                                                    for (var i = 0; i < dwNature.length; i++) {
-                                                        if (typeof (dwNature[i][info.aab019] !== "undefined")) {
-                                                            workDocument.getElementById("aab0191$text").value = dwNature[i][info.aab019];
-                                                            workDocument.getElementById("aab0191$value").value = info.aab019;
-                                                        }
+                                                var infoLen = info.length;
+                                                for (var i = 0; i < infoLen; i++) {
+                                                    if (info[i].aaa021 == formData[key]) {
+                                                        var code = info[i].aaa020;
+                                                        edata = {
+                                                            aaa023: info[i].aaa023
+                                                        };
+                                                        workDocument.getElementById(keyId).value = formData[key];
+                                                        $(workDocument).find("input[name='" + key + "']").val(code);
+                                                        break;
                                                     }
-                                                };
-                                                //设置经济类型
-                                                if (typeof (info.aab020) !== "undefined") {
-                                                    for (var i = 0; i < economicsType.length; i++) {
-                                                        if (typeof (economicsType[i][info.aab020] !== "undefined")) {
-                                                            workDocument.getElementById("aab020$text").value = economicsType[i][info.aab020];
-                                                        }
-                                                    }
-                                                    $(workDocument).find("input[name='aab020']").val(info.aab020);
                                                 }
-                                            } else {
-                                                alert("组织结构代码错误");
-                                                $(workDocument).find("input[name='" + key + "']").val("");
-                                                workDocument.getElementById("aab0191$text").value = "";
-                                                workDocument.getElementById("aab0191$value").value = "";
-                                                workDocument.getElementById("aab020$text").value = "";
-                                                $(workDocument).find("input[name='aab020']").val("");
-                                            }
-                                        };
-                                        _ajax(url, data, method, success);
-                                    } else if (key == "bdc068") { //申请材料退回方式
-                                        workDocument.getElementById(keyId).value = formData[key];
-                                        switch (formData[key]) {
-                                            case "自己领取":
-                                                $(workDocument).find("input[name='" + key + "']").val("1");
-                                                break;
-                                            case "快递到付":
-                                                $(workDocument).find("input[name='" + key + "']").val("2");
-                                                break;
-                                            case "不需要退回":
-                                                $(workDocument).find("input[name='" + key + "']").val("3");
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    } else if (key == "bdc042") { //失业前职位
-                                        workDocument.getElementById(keyId).value = formData[key];
-                                        switch (formData[key]) {
-                                            case "单位负责人":
-                                                $(workDocument).find("input[name='" + key + "']").val(1);
-                                                break;
-                                            case "专业技术人":
-                                                $(workDocument).find("input[name='" + key + "']").val(2);
-                                                break;
-                                            case "办事管理人":
-                                                $(workDocument).find("input[name='" + key + "']").val(3);
-                                                break;
-                                            case "商贸服务人":
-                                                $(workDocument).find("input[name='" + key + "']").val(4);
-                                                break;
-                                            case "生产云输人":
-                                                $(workDocument).find("input[name='" + key + "']").val(5);
-                                                break;
-                                            case "农林牧渔人":
-                                                $(workDocument).find("input[name='" + key + "']").val(6);
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    } else if (key == "aac048") { //用工形式                                             
-                                        if (formData[key].indexOf("不限") > -1) {
-                                            $(workDocument).find("input[name='" + key + "']").val("1");
-                                            $(workDocument).find("#mini-124\\$0").addClass("mini-checkboxlist-item-selected")
-                                                .siblings().removeClass("mini-checkboxlist-item-selected");
-                                        };
-                                        if (formData[key].indexOf("合同制") > -1) {
-                                            var value = $(workDocument).find("input[name='" + key + "']").val();
-                                            $(workDocument).find("#mini-124\\$1").addClass("mini-checkboxlist-item-selected")
-                                                .siblings("#mini-124\\$0").removeClass("mini-checkboxlist-item-selected");
-                                            if (parseFloat(value) !== 1 && value !== "") {
-                                                value += ",2"
-                                            } else {
-                                                value = 2;
-                                            }
-                                        };
-                                        if (formData[key].indexOf("临时工") > -1) {
-                                            var value = $(workDocument).find("input[name='" + key + "']").val();
-                                            $(workDocument).find("#mini-124\\$2").addClass("mini-checkboxlist-item-selected")
-                                                .siblings("#mini-124\\$0").removeClass("mini-checkboxlist-item-selected");
-                                            if (parseFloat(value) !== 1 && value !== "") {
-                                                value += ",3"
-                                            } else {
-                                                value = 3;
-                                            }
-                                        };
-                                        if (formData[key].indexOf("兼职") > -1) {
-                                            var value = $(workDocument).find("input[name='" + key + "']").val();
-                                            $(workDocument).find("#mini-124\\$3").addClass("mini-checkboxlist-item-selected")
-                                                .siblings("#mini-124\\$0").removeClass("mini-checkboxlist-item-selected");
-                                            if (parseFloat(value) !== 1 && value !== "") {
-                                                value += ",4"
-                                            } else {
-                                                value = 4;
-                                            }
-                                        };
-                                        if (formData[key].indexOf("计时工") > -1) {
-                                            var value = $(workDocument).find("input[name='" + key + "']").val();
-                                            $(workDocument).find("#mini-124\\$4").addClass("mini-checkboxlist-item-selected")
-                                                .siblings("#mini-124\\$0").removeClass("mini-checkboxlist-item-selected");
-                                            if (parseFloat(value) !== 1 && value !== "") {
-                                                value += ",5"
-                                            } else {
-                                                value = 5;
-                                            }
-                                        };
-                                        if (formData[key].indexOf("其他") > -1) {
-                                            var value = $(workDocument).find("input[name='" + key + "']").val();
-                                            $(workDocument).find("#mini-124\\$5").addClass("mini-checkboxlist-item-selected")
-                                                .siblings("#mini-124\\$0").removeClass("mini-checkboxlist-item-selected");
-                                            if (parseFloat(value) !== 1 && value !== "") {
-                                                value += ",6"
-                                            } else {
-                                                value = 6;
-                                            }
-                                        };
-                                    } else if (key == "ccc204") { //工作地点
-                                        workDocument.getElementById(keyId).value = formData[key];
-                                        switch (formData[key]) {
-                                            case "不限":
-                                                $(workDocument).find("input[name='" + key + "']").val("1");
-                                                break;
-                                            case "本市":
-                                                $(workDocument).find("input[name='" + key + "']").val("2");
-                                                break;
-                                            case "本省":
-                                                $(workDocument).find("input[name='" + key + "']").val("3");
-                                                break;
-                                            case "外省":
-                                                $(workDocument).find("input[name='" + key + "']").val("4");
-                                                break;
-                                            case "不限":
-                                                $(workDocument).find("input[name='" + key + "']").val("5");
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    } else if (key == "ccc266") {  //工作班次                             
-                                        if (formData[key].indexOf("无要求") > -1) {
-                                            $(workDocument).find("input[name='" + key + "']").val("1");
-                                            $(workDocument).find("#mini-131\\$0").addClass("mini-checkboxlist-item-selected")
-                                                .siblings().removeClass("mini-checkboxlist-item-selected");
-                                        };
-                                        if (formData[key].indexOf("常日班") > -1) {
-                                            var value = $(workDocument).find("input[name='" + key + "']").val();
-                                            $(workDocument).find("#mini-131\\$1").addClass("mini-checkboxlist-item-selected")
-                                                .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
-                                            if (parseFloat(value) !== 1 && value !== "") {
-                                                value += ",2"
-                                            } else {
-                                                value = 2;
-                                            }
-                                        };
-                                        if (formData[key].indexOf("二班制") > -1) {
-                                            var value = $(workDocument).find("input[name='" + key + "']").val();
-                                            $(workDocument).find("#mini-131\\$2").addClass("mini-checkboxlist-item-selected")
-                                                .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
-                                            if (parseFloat(value) !== 1 && value !== "") {
-                                                value += ",3"
-                                            } else {
-                                                value = 3;
-                                            }
-                                        };
-                                        if (formData[key].indexOf("三班制") > -1) {
-                                            var value = $(workDocument).find("input[name='" + key + "']").val();
-                                            $(workDocument).find("#mini-131\\$3").addClass("mini-checkboxlist-item-selected")
-                                                .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
-                                            if (parseFloat(value) !== 1 && value !== "") {
-                                                value += ",4"
-                                            } else {
-                                                value = 4;
-                                            }
-                                        };
-                                        if (formData[key].indexOf("四班三运转") > -1) {
-                                            var value = $(workDocument).find("input[name='" + key + "']").val();
-                                            $(workDocument).find("#mini-131\\$4").addClass("mini-checkboxlist-item-selected")
-                                                .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
-                                            if (parseFloat(value) !== 1 && value !== "") {
-                                                value += ",5"
-                                            } else {
-                                                value = 5;
-                                            }
-                                        };
-                                        if (formData[key].indexOf("长夜班") > -1) {
-                                            var value = $(workDocument).find("input[name='" + key + "']").val();
-                                            $(workDocument).find("#mini-131\\$5").addClass("mini-checkboxlist-item-selected")
-                                                .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
-                                            if (parseFloat(value) !== 1 && value !== "") {
-                                                value += ",6"
-                                            } else {
-                                                value = 6;
-                                            }
-                                        };
-                                        if (formData[key].indexOf("做一休一") > -1) {
-                                            var value = $(workDocument).find("input[name='" + key + "']").val();
-                                            $(workDocument).find("#mini-131\\$6").addClass("mini-checkboxlist-item-selected")
-                                                .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
-                                            if (parseFloat(value) !== 1 && value !== "") {
-                                                value += ",7"
-                                            } else {
-                                                value = 7;
-                                            }
-                                        };
-                                    } else if (key == "aab019") {  //单位类型
-                                        var dwCode;
-                                        var dwText = formData[key]
-                                        for (var i = 0; i < dwTypeData.length; i++) {
-                                            if (typeof (dwTypeData[i][dwText]) !== "undefined") {
-                                                dwCode = dwTypeData[i][dwText];
-                                                workDocument.getElementById("aab0192$text").value = formData[key];
-                                                $(workDocument).find("#aab0192\\$value").val(dwCode);
-                                                break;
                                             };
-                                        };
-                                    } else if (key == "bcc002") { //推荐状态                                    
-                                        switch (formData[key]) {
-                                            case "等待推荐":
-                                                $(workDocument).find("input[name='" + key + "']").val("10");
-                                                break;
-                                            case "推荐中":
-                                                $(workDocument).find("input[name='" + key + "']").val("20");
-                                                break;
-                                            case "推荐成功":
-                                                $(workDocument).find("input[name='" + key + "']").val("40");
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    } else if (key == "acb448") { //是否网上发布
-                                        workDocument.getElementById(keyId).value = formData[key];
-                                        switch (formData[key]) {
-                                            case "否":
-                                                $(workDocument).find("input[name='" + key + "']").val("0");
-                                                break;
-                                            case "是":
-                                                $(workDocument).find("input[name='" + key + "']").val("1");
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    } else if (key == "aca112") { //所求岗位一                                                                             
-                                        var postCode;
-                                        var postText = formData[key]
-                                        for (var i = 0; i < postTypeData.length; i++) {
-                                            if (typeof (postTypeData[i][postText]) !== "undefined") {
-                                                postCode = postTypeData[i][postText];
-                                                workDocument.getElementById('aca112$text').value = postText;
-                                                $(workDocument).find("input[name='aca112']").val(postCode);
-                                                workDocument.getElementById('aca216$text').value = postText;
-                                                break;
+                                            var esuccess = function (data) {
+                                                var info = data.data;
+                                                workDocument.getElementById('province1$text').value = info[1].aaa021;
+                                                $(workDocument).find("input[name='province1']").val(info[1].aaa020);
+                                                workDocument.getElementById('city1$text').value = info[0].aaa021;
+                                                $(workDocument).find("input[name='city1']").val(info[0].aaa020);
+                                            };
+                                            _ajax(url, data, method, success);
+                                            _ajax(eurl, edata, method, esuccess);
+                                        } else if (key == "street1") { //户籍地 街道
+                                            var aaa020Value = $(workDocument).find("input[name='area1']").val();
+                                            url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCity";
+                                            data = {
+                                                aaa020: aaa020Value
+                                            };
+                                            method = "GET";
+                                            success = function (data) {
+                                                var info = data.data;
+                                                var infoLen = info.length;
+                                                for (var i = 0; i < infoLen; i++) {
+                                                    if (info[i].aaa021 == formData[key]) {
+                                                        var code = info[i].aaa020;
+                                                        workDocument.getElementById(keyId).value = formData[key];
+                                                        $(workDocument).find("input[name='" + key + "']").val(code);
+                                                        break;
+                                                    }
+                                                }
+                                            };
+                                            _ajax(url, data, method, success);
+                                        } else if (key == "community1") { //户籍地 社区
+                                            var aaa020Value = $(workDocument).find("input[name='street1']").val();
+                                            url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCity";
+                                            data = {
+                                                aaa020: aaa020Value
+                                            };
+                                            method = "GET";
+                                            success = function (data) {
+                                                var info = data.data;
+                                                var infoLen = info.length;
+                                                for (var i = 0; i < infoLen; i++) {
+                                                    if (info[i].aaa021 == formData[key]) {
+                                                        var code = info[i].aaa020;
+                                                        workDocument.getElementById(keyId).value = formData[key];
+                                                        $(workDocument).find("input[name='" + key + "']").val(code);
+                                                        break;
+                                                    }
+                                                }
+                                            };
+                                            _ajax(url, data, method, success);
+                                        } else if (key == "area2") {  //居住地 区
+                                            url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryHZArea";
+                                            data = {};
+                                            method = "GET";
+                                            success = function (data) {
+                                                var info = data.data;
+                                                var infoLen = info.length;
+                                                for (var i = 0; i < infoLen; i++) {
+                                                    if (info[i].aaa021 == formData[key]) {
+                                                        var code = info[i].aaa020;
+                                                        workDocument.getElementById(keyId).value = formData[key];
+                                                        $(workDocument).find("input[name='" + key + "']").val(code);
+                                                        break;
+                                                    }
+                                                }
+                                            };
+                                            _ajax(url, data, method, success);
+                                        } else if (key == "street2") {  //居住地 街道
+                                            var aaa020Value = $(workDocument).find("input[name='area2']").val();
+                                            url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCity";
+                                            data = {
+                                                aaa020: aaa020Value
+                                            };
+                                            method = "GET";
+                                            success = function (data) {
+                                                var info = data.data;
+                                                var infoLen = info.length;
+                                                for (var i = 0; i < infoLen; i++) {
+                                                    if (info[i].aaa021 == formData[key]) {
+                                                        var code = info[i].aaa020;
+                                                        workDocument.getElementById(keyId).value = formData[key];
+                                                        $(workDocument).find("input[name='" + key + "']").val(code);
+                                                        break;
+                                                    }
+                                                }
                                             }
+                                        } else if (key == "community2") { //居住地 社区
+                                            var aaa020Value = $(workDocument).find("input[name='street2']").val();
+                                            url = "http://172.16.83.22:9001/lemis/unemployment/dc04/queryCity";
+                                            data = {
+                                                aaa020: aaa020Value
+                                            };
+                                            method = "GET";
+                                            success = function (data) {
+                                                var info = data.data;
+                                                var infoLen = info.length;
+                                                for (var i = 0; i < infoLen; i++) {
+                                                    if (info[i].aaa021 == formData[key]) {
+                                                        var code = info[i].aaa020;
+                                                        workDocument.getElementById(keyId).value = formData[key];
+                                                        $(workDocument).find("input[name='" + key + "']").val(code);
+                                                        break;
+                                                    }
+                                                }
+                                            };
+                                            _ajax(url, data, method, success);
+                                        } else if (key == "aac005") {  //民族
+                                            var nationCode;
+                                            var nationText = formData[key]
+                                            for (var i = 0; i < nationData.length; i++) {
+                                                if (typeof (nationData[i][nationText]) !== "undefined") {
+                                                    nationCode = nationData[i][nationText];
+                                                    workDocument.getElementById(keyId).value = formData[key];
+                                                    $(workDocument).find("input[name='" + key + "']").val(nationCode);
+                                                    break;
+                                                }
+                                            }
+                                        } else if (key == "aac017") {  //婚姻   
+                                            var marriageCode;
+                                            switch (formData[key]) {
+                                                case "未婚":
+                                                    marriageCode = "1";
+                                                    break;
+                                                case "已婚":
+                                                    marriageCode = "2";
+                                                    break;
+                                                case "丧偶":
+                                                    marriageCode = "3";
+                                                    break;
+                                                case "离婚":
+                                                    marriageCode = "4";
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                            workDocument.getElementById(keyId).value = formData[key];
+                                            $(workDocument).find("input[name='" + key + "']").val(marriageCode);
+                                        } else if (key == "aac011") {  //学历
+                                            var educationCode;
+                                            var educationText = formData[key]
+                                            for (var i = 0; i < educationData.length; i++) {
+                                                if (typeof (educationData[i][educationText]) !== "undefined") {
+                                                    educationCode = educationData[i][educationText];
+                                                    workDocument.getElementById(keyId).value = formData[key];
+                                                    $(workDocument).find("input[name='" + key + "']").val(educationCode);
+                                                    break;
+                                                }
+                                            }
+                                        } else if (key == "aac183") {  //专业
+                                            var majorCode;
+                                            var majorText = formData[key]
+                                            for (var i = 0; i < majorData.length; i++) {
+                                                if (typeof (majorData[i][majorText]) !== "undefined") {
+                                                    majorCode = majorData[i][majorText];
+                                                    workDocument.getElementById(keyId).value = formData[key];
+                                                    $(workDocument).find("input[name='" + key + "']").val(majorCode);
+                                                    break;
+                                                }
+                                            }
+                                        } else if (key == "ajc093") {  //失业原因                                    
+                                            var unemploymentCode;
+                                            var unemploymentText = formData[key]
+                                            console.log(unemploymentText);
+                                            for (var i = 0; i < unemploymentData.length; i++) {
+                                                if (typeof (unemploymentData[i][unemploymentText]) !== "undefined") {
+                                                    unemploymentCode = unemploymentData[i][unemploymentText];
+                                                    workDocument.getElementById(keyId).value = formData[key];
+                                                    console.log(workDocument.getElementById(keyId));
+                                                    console.log(formData[key]);
+                                                    $(workDocument).find("input[name='" + key + "']").val(unemploymentCode);
+                                                    break;
+                                                }
+                                            }
+                                        } else if (key == "bdc062") { //是否申领保险金
+                                            workDocument.getElementById(keyId).value = formData[key];
+                                            switch (formData[key]) {
+                                                case "否":
+                                                    $(workDocument).find("input[name='" + key + "']").val("0");
+                                                    break;
+                                                case "是":
+                                                    $(workDocument).find("input[name='" + key + "']").val("1");
+                                                    break;
+
+                                                default:
+                                                    break;
+                                            }
+                                        } else if (key == "bdc067") { //是否打印就业创业证书
+                                            workDocument.getElementById(keyId).value = formData[key];
+                                            switch (formData[key]) {
+                                                case "否":
+                                                    $(workDocument).find("input[name='" + key + "']").val(0);
+                                                    break;
+                                                case "是":
+                                                    $(workDocument).find("input[name='" + key + "']").val(1);
+                                                    break;
+
+                                                default:
+                                                    break;
+                                            }
+                                        } else if (key == "aab003") { //组织结构代码
+
+                                            url = "http://172.16.83.22:9001/lemis/basicinfo/ab01/queryAb01ByAab003ToUNE";
+                                            data = {
+                                                aab003: formData[key]
+                                            };
+                                            method = "POST";
+                                            success = function (data) {
+                                                if (!data.success == false) {
+                                                    $(workDocument).find("input[name='" + key + "']").val(formData[key]);
+                                                    var info = data.data;
+                                                    //设置组织结构代码（当输入信用号码也可以查找到信息，因此需要把组织机构代码输入）                                    
+                                                    $(workDocument).find("input[name='" + key + "']").val(info.aab003);
+                                                    //设置单位名称
+                                                    $(workDocument).find("input[name='aab004']").val(info.aab004);
+                                                    //设置单位性质
+                                                    if (typeof (info.aab019) !== "undefined") {
+                                                        for (var i = 0; i < dwNature.length; i++) {
+                                                            if (typeof (dwNature[i][info.aab019] !== "undefined")) {
+                                                                workDocument.getElementById("aab0191$text").value = dwNature[i][info.aab019];
+                                                                workDocument.getElementById("aab0191$value").value = info.aab019;
+                                                            }
+                                                        }
+                                                    };
+                                                    //设置经济类型
+                                                    if (typeof (info.aab020) !== "undefined") {
+                                                        for (var i = 0; i < economicsType.length; i++) {
+                                                            if (typeof (economicsType[i][info.aab020] !== "undefined")) {
+                                                                workDocument.getElementById("aab020$text").value = economicsType[i][info.aab020];
+                                                            }
+                                                        }
+                                                        $(workDocument).find("input[name='aab020']").val(info.aab020);
+                                                    }
+                                                } else {
+                                                    alert("组织结构代码错误");
+                                                    $(workDocument).find("input[name='" + key + "']").val("");
+                                                    workDocument.getElementById("aab0191$text").value = "";
+                                                    workDocument.getElementById("aab0191$value").value = "";
+                                                    workDocument.getElementById("aab020$text").value = "";
+                                                    $(workDocument).find("input[name='aab020']").val("");
+                                                }
+                                            };
+                                            _ajax(url, data, method, success);
+                                        } else if (key == "bdc068") { //申请材料退回方式
+                                            workDocument.getElementById(keyId).value = formData[key];
+                                            switch (formData[key]) {
+                                                case "自己领取":
+                                                    $(workDocument).find("input[name='" + key + "']").val("1");
+                                                    break;
+                                                case "快递到付":
+                                                    $(workDocument).find("input[name='" + key + "']").val("2");
+                                                    break;
+                                                case "不需要退回":
+                                                    $(workDocument).find("input[name='" + key + "']").val("3");
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        } else if (key == "bdc042") { //失业前职位
+                                            workDocument.getElementById(keyId).value = formData[key];
+                                            switch (formData[key]) {
+                                                case "单位负责人":
+                                                    $(workDocument).find("input[name='" + key + "']").val(1);
+                                                    break;
+                                                case "专业技术人":
+                                                    $(workDocument).find("input[name='" + key + "']").val(2);
+                                                    break;
+                                                case "办事管理人":
+                                                    $(workDocument).find("input[name='" + key + "']").val(3);
+                                                    break;
+                                                case "商贸服务人":
+                                                    $(workDocument).find("input[name='" + key + "']").val(4);
+                                                    break;
+                                                case "生产云输人":
+                                                    $(workDocument).find("input[name='" + key + "']").val(5);
+                                                    break;
+                                                case "农林牧渔人":
+                                                    $(workDocument).find("input[name='" + key + "']").val(6);
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        } else if (key == "aac048") { //用工形式                                             
+                                            if (formData[key].indexOf("不限") > -1) {
+                                                $(workDocument).find("input[name='" + key + "']").val("1");
+                                                $(workDocument).find("#mini-124\\$0").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings().removeClass("mini-checkboxlist-item-selected");
+                                            };
+                                            if (formData[key].indexOf("合同制") > -1) {
+                                                var value = $(workDocument).find("input[name='" + key + "']").val();
+                                                $(workDocument).find("#mini-124\\$1").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings("#mini-124\\$0").removeClass("mini-checkboxlist-item-selected");
+                                                if (parseFloat(value) !== 1 && value !== "") {
+                                                    value += ",2"
+                                                } else {
+                                                    value = 2;
+                                                }
+                                            };
+                                            if (formData[key].indexOf("临时工") > -1) {
+                                                var value = $(workDocument).find("input[name='" + key + "']").val();
+                                                $(workDocument).find("#mini-124\\$2").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings("#mini-124\\$0").removeClass("mini-checkboxlist-item-selected");
+                                                if (parseFloat(value) !== 1 && value !== "") {
+                                                    value += ",3"
+                                                } else {
+                                                    value = 3;
+                                                }
+                                            };
+                                            if (formData[key].indexOf("兼职") > -1) {
+                                                var value = $(workDocument).find("input[name='" + key + "']").val();
+                                                $(workDocument).find("#mini-124\\$3").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings("#mini-124\\$0").removeClass("mini-checkboxlist-item-selected");
+                                                if (parseFloat(value) !== 1 && value !== "") {
+                                                    value += ",4"
+                                                } else {
+                                                    value = 4;
+                                                }
+                                            };
+                                            if (formData[key].indexOf("计时工") > -1) {
+                                                var value = $(workDocument).find("input[name='" + key + "']").val();
+                                                $(workDocument).find("#mini-124\\$4").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings("#mini-124\\$0").removeClass("mini-checkboxlist-item-selected");
+                                                if (parseFloat(value) !== 1 && value !== "") {
+                                                    value += ",5"
+                                                } else {
+                                                    value = 5;
+                                                }
+                                            };
+                                            if (formData[key].indexOf("其他") > -1) {
+                                                var value = $(workDocument).find("input[name='" + key + "']").val();
+                                                $(workDocument).find("#mini-124\\$5").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings("#mini-124\\$0").removeClass("mini-checkboxlist-item-selected");
+                                                if (parseFloat(value) !== 1 && value !== "") {
+                                                    value += ",6"
+                                                } else {
+                                                    value = 6;
+                                                }
+                                            };
+                                        } else if (key == "ccc204") { //工作地点
+                                            workDocument.getElementById(keyId).value = formData[key];
+                                            switch (formData[key]) {
+                                                case "不限":
+                                                    $(workDocument).find("input[name='" + key + "']").val("1");
+                                                    break;
+                                                case "本市":
+                                                    $(workDocument).find("input[name='" + key + "']").val("2");
+                                                    break;
+                                                case "本省":
+                                                    $(workDocument).find("input[name='" + key + "']").val("3");
+                                                    break;
+                                                case "外省":
+                                                    $(workDocument).find("input[name='" + key + "']").val("4");
+                                                    break;
+                                                case "不限":
+                                                    $(workDocument).find("input[name='" + key + "']").val("5");
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        } else if (key == "ccc266") {  //工作班次                             
+                                            if (formData[key].indexOf("无要求") > -1) {
+                                                $(workDocument).find("input[name='" + key + "']").val("1");
+                                                $(workDocument).find("#mini-131\\$0").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings().removeClass("mini-checkboxlist-item-selected");
+                                            };
+                                            if (formData[key].indexOf("常日班") > -1) {
+                                                var value = $(workDocument).find("input[name='" + key + "']").val();
+                                                $(workDocument).find("#mini-131\\$1").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
+                                                if (parseFloat(value) !== 1 && value !== "") {
+                                                    value += ",2"
+                                                } else {
+                                                    value = 2;
+                                                }
+                                            };
+                                            if (formData[key].indexOf("二班制") > -1) {
+                                                var value = $(workDocument).find("input[name='" + key + "']").val();
+                                                $(workDocument).find("#mini-131\\$2").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
+                                                if (parseFloat(value) !== 1 && value !== "") {
+                                                    value += ",3"
+                                                } else {
+                                                    value = 3;
+                                                }
+                                            };
+                                            if (formData[key].indexOf("三班制") > -1) {
+                                                var value = $(workDocument).find("input[name='" + key + "']").val();
+                                                $(workDocument).find("#mini-131\\$3").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
+                                                if (parseFloat(value) !== 1 && value !== "") {
+                                                    value += ",4"
+                                                } else {
+                                                    value = 4;
+                                                }
+                                            };
+                                            if (formData[key].indexOf("四班三运转") > -1) {
+                                                var value = $(workDocument).find("input[name='" + key + "']").val();
+                                                $(workDocument).find("#mini-131\\$4").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
+                                                if (parseFloat(value) !== 1 && value !== "") {
+                                                    value += ",5"
+                                                } else {
+                                                    value = 5;
+                                                }
+                                            };
+                                            if (formData[key].indexOf("长夜班") > -1) {
+                                                var value = $(workDocument).find("input[name='" + key + "']").val();
+                                                $(workDocument).find("#mini-131\\$5").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
+                                                if (parseFloat(value) !== 1 && value !== "") {
+                                                    value += ",6"
+                                                } else {
+                                                    value = 6;
+                                                }
+                                            };
+                                            if (formData[key].indexOf("做一休一") > -1) {
+                                                var value = $(workDocument).find("input[name='" + key + "']").val();
+                                                $(workDocument).find("#mini-131\\$6").addClass("mini-checkboxlist-item-selected")
+                                                    .siblings("#mini-131\\$0").removeClass("mini-checkboxlist-item-selected");
+                                                if (parseFloat(value) !== 1 && value !== "") {
+                                                    value += ",7"
+                                                } else {
+                                                    value = 7;
+                                                }
+                                            };
+                                        } else if (key == "aab019") {  //单位类型
+                                            var dwCode;
+                                            var dwText = formData[key]
+                                            for (var i = 0; i < dwTypeData.length; i++) {
+                                                if (typeof (dwTypeData[i][dwText]) !== "undefined") {
+                                                    dwCode = dwTypeData[i][dwText];
+                                                    workDocument.getElementById("aab0192$text").value = formData[key];
+                                                    $(workDocument).find("#aab0192\\$value").val(dwCode);
+                                                    break;
+                                                };
+                                            };
+                                        } else if (key == "bcc002") { //推荐状态                                    
+                                            switch (formData[key]) {
+                                                case "等待推荐":
+                                                    $(workDocument).find("input[name='" + key + "']").val("10");
+                                                    break;
+                                                case "推荐中":
+                                                    $(workDocument).find("input[name='" + key + "']").val("20");
+                                                    break;
+                                                case "推荐成功":
+                                                    $(workDocument).find("input[name='" + key + "']").val("40");
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        } else if (key == "acb448") { //是否网上发布
+                                            workDocument.getElementById(keyId).value = formData[key];
+                                            switch (formData[key]) {
+                                                case "否":
+                                                    $(workDocument).find("input[name='" + key + "']").val("0");
+                                                    break;
+                                                case "是":
+                                                    $(workDocument).find("input[name='" + key + "']").val("1");
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        } else if (key == "aca112") { //所求岗位一                                                                             
+                                            var postCode;
+                                            var postText = formData[key]
+                                            for (var i = 0; i < postTypeData.length; i++) {
+                                                if (typeof (postTypeData[i][postText]) !== "undefined") {
+                                                    postCode = postTypeData[i][postText];
+                                                    workDocument.getElementById('aca112$text').value = postText;
+                                                    $(workDocument).find("input[name='aca112']").val(postCode);
+                                                    workDocument.getElementById('aca216$text').value = postText;
+                                                    break;
+                                                }
+                                            }
+                                            $(workDocument).find("input[name='" + key + "']").val("0");
                                         }
-                                        $(workDocument).find("input[name='" + key + "']").val("0");
                                     }
+                                    $(workDocument.body).find('.load-container').removeClass('active');
                                 }
-                                // $(workDocument.body).find('.load-container').removeClass('active');
-                                // } 
-                                // catch (error) {
-                                //     setTimeout(fillForm, 1000);
-                                // }                             
-                                var changeEvent = new UIEvent("change");
-                                var blurEvent = new UIEvent("blur");
-                                var code = formData["aac002"];
-                                var idcardInput = $(workDocument).find("input[name='aac002']")[0];
-                                idcardInput.value = code;
-                                idcardInput.dispatchEvent(changeEvent);
-                                idcardInput.dispatchEvent(blurEvent);
+                                catch (error) {
+                                    setTimeout(fillForm, 1000);
+                                }
+                                //原生触发事件               
+                                // var changeEvent = new UIEvent("change");
+                                // var blurEvent = new UIEvent("blur");
+                                // var code = formData["aac002"];
+                                // var idcardInput = $(workDocument).find("input[name='aac002']")[0];
+                                // idcardInput.value = code;
+                                // idcardInput.dispatchEvent(changeEvent);
+                                // idcardInput.dispatchEvent(blurEvent);
                             } else {
                                 setTimeout(fillForm, 1000);
                             };
