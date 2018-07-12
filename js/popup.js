@@ -170,7 +170,7 @@ var dataList =
 
 dataList = [{ "id": "2c90892a62d2f17b0162d6426fa60016", "name": "失业登记", "areaCode": "330103005063", "data": { "aac002": "330681199002093318", "aac003": "周妙军", "bdc049": "3301581123", "aac009": "外地居民户口", "bdc021": "", "bdc041": "居住地失业登记", "province1": "浙江省", "city1": "杭州市", "area1": "下城区", "street1": "潮鸣街道", "community1": "艮山门社区", "areaCode1": "330103005063", "aac010": "", "area2": "", "street2": "", "community2": "", "aac026": "", "aac005": "汉族", "aac017": "未婚", "aac011": "职业高中", "aac181": "2012-04-24", "aac180": "职高", "aac183": "汽修", "aac067": "13888888888", "aae005": "88888888", "ajc093": "从用人单位失业", "ajc090": "2017-04-04", "bdc062": "否", "bdc067": "否", "aae053": "31231231823521312", "aab003": "GJ123131", "aab019": "企业", "aab020": "", "aab004": "", "bdc068": "自己领回", "bdc027": "", "bdc042": "单位负责人", "aca112": "其他", "aca216": "", "aac048": "", "acc034": "1000", "ccc204": "不限", "ccc266": "", "acc214": "五险一金", "aae043": "2018-04-03", "bcc002": "等待推荐", "acb448": "否", "username": "", "aae044": "", "orgname": "", "aae013": "" } }]
 
-var EVENTLISTDATA;
+var EVENTLISTDATA; 
 
 
 /**
@@ -431,7 +431,7 @@ $(function () {
             chrome.tabs.sendMessage(tabs[0].id, obj, function (response) {
                 console.log("Send Success");
                 // window.close();
-            });
+            });            
         });
     });
 
